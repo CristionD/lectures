@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <!-- 
-    Flexbox layouts in CSS allow for the reorganization of content based on the size of the viewport. This is an example of "responsive design," the idea that a website should look good regardless of the platform or display it's viewed on.
+    Flexbox layouts in CSS allow for the reorganization of content based on the size of the viewport.
+    This is an example of "responsive design," the idea that a website should look good regardless of the platform or display it's viewed on.
  -->
 <html>
     <head>
-        <title>Flexbox example</title>
+        <title>Flexbox Example</title>
         <style>
             .container {
                 display: flex;
                 flex-wrap: wrap;
             }
-            /* "a > b" means that "b" is the immediate child of "a" */
+            /* "a > b" means that "b" is the immediate child (not grand-child) of "a" */
+            /* Styles the immediate child of div elements in an element of class 'container' */
             .container > div {
                 background-color: springgreen;
                 font-size: 20px;

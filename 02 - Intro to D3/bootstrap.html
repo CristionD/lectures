@@ -1,5 +1,7 @@
 <!-- 
-    In contrast to manually creating flexbox or grid layouts, you can use Bootstrap. Bootstrap is a CSS library that (1) makes page stylings look a little nicer/cleaner and (2) givs you access to a powerful responsive layout system.
+    In contrast to manually creating flexbox or grid layouts, you can use Bootstrap. Bootstrap is a CSS library that 
+    (1) makes page stylings look a little nicer/cleaner and
+    (2) givs you access to a powerful responsive layout system.
 
     Bootstrap layouts are a column-based model where every row in the website is divided into 12 indvidiual columns. Elements can be allotted a number of columns to fill.
 
@@ -10,40 +12,34 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bootstrap example</title>
+        <title>Bootstrap Example</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" /> 
         <style>
             .row > div {
             padding: 20px;
             background-color: springgreen;
             border: 2px solid black;
-        }
-        .row {
-            margin-bottom:50px;
-        }
-        .alert {
-            margin: 20px;
-        }
+            }
+            .row {
+                margin-bottom:50px;
+            }
+            .alert {
+                margin: 20px;
+            }
         </style>
     </head>
     <body>
+        <!-- "container" is a class defined in the bootstrap CSS file -->
         <div class="container">
             <h1>Welcome to CSE 494!</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elit magna, hendrerit a tortor eu, euismod lobortis dolor. Integer accumsan orci et semper bibendum.</p>
-
-            
-            <div class="alert alert-primary" role="alert">
-                This is an alert message. Don't forget to do Homework #1!
-            </div>
-            <div class="alert alert-success" role="alert">
-                This is an alert message. You submitted Homework #1!
-            </div>
-            <div class="alert alert-danger" role="alert">
-                This is an alert message. You didn't do Homework #1!
-            </div>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elit magna, hendrerit a tortor eu, euismod lobortis dolor.
+                Integer accumsan orci et semper bibendum.
+            </p>
 
             <!-- 
                 Bootstrap rows are referenced with class="row" and interior elements with class="col-*", where * is a number 1-12.
+                The number following "col" represents how many columns each child element occupies.
              -->
             <div class="row">
                 <div class="col-3">
@@ -93,6 +89,19 @@
                 <div class="col-3">
                     This is a third section.
                 </div>
+            </div>
+
+            <!-- Can be utilized to alert the user of an important event like a website maintenance. -->
+            <div class="alert alert-primary" role="alert">
+                This is an alert message. Don't forget to do Homework #1!
+            </div>
+            <!-- Can be utilized to alert the user that they or some other entity completed a task sucessfully. -->
+            <div class="alert alert-success" role="alert">
+                This is an alert message. You submitted Homework #1!
+            </div>
+            <!-- Can be utilized to alert the user that they made a mistake or an error was encountered. -->
+            <div class="alert alert-danger" role="alert">
+                This is an alert message. You didn't do Homework #1!
             </div>
 
         </div>

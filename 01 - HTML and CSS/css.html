@@ -1,9 +1,76 @@
+<!--
+    CSS, or Cascading Style Sheets, is a language that is utilized to style the HTML elements on the browser.
+    For a nice overview of what the "cascading" part of CSS means, see this video: https://www.youtube.com/watch?v=ndM8b-hnSwM
+    CSS doesn't require line breaks, but this is a generally accepted style. Lots of CSS and Javascript libraries are co-published as "min" versions that remove line breaks and whitespace. This makes the file smaller, so the browser can fetch and read it faster. Here's an example: https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css
+-->
+
+<!--
+    CSS Priority Rankings:
+    https://www.thebookdesigner.com/2017/02/styling-priorities-css-for-ebooks-3/
+-->
 <!DOCTYPE html>
 <html>
     <head>
-        <title>CSS example</title>
+        <title>CSS Example</title>
+        <style>
+            /* Styles h1 elements */
+            h1 {
+                font-family: Verdana;
+                color: green;
+                text-align: center;
+            }
+            /* Styles an element with the UNIQUE ID of 'second_header' */
+            #second_header {
+                font-family: Georgia;
+                color: blue;
+                text-align: center;
+            }
+            /* Styles elements apart of the class 'headers' */
+            .headers {
+                font-family: 'Times New Roman';
+                color: purple;
+                text-align: center;
+            }
+            .alt_headers {
+                font-family: sans-serif;
+                color: black;
+                text-align: center;
+            }
+        </style>
+        <!-- This link references a CSS file to utilize for styling an HTML page. -->
+        <link rel='stylesheet' href="styles.css"/>
+        <!-- To discover which style an element is adopting, inspect it in the browser. -->
     </head>
     <body>
-        Hello, world!
+        <h1>Hello, world.</h1>
+        <h1 id='second_header'>I enjoy pie.</h1>
+        <h1 class='headers'>I prefer cookies.</h1>
+        <!-- The class style in this file overrides the h2 style defined in the CSS file. -->
+        <h2 class='headers'>Same.</h2>
+        <!-- The class style in the CSS file overrides the class style in this file, only if
+             the class style is defined above the element style in the CSS file. -->
+        <h2 class='alt_headers'>Anyone has a croissant?</h2>
+
+        <!-- div elements are utilized as containers for other elements -->
+        <div class='contentDiv'>Some content.</div>
+        <div class='contentDiv'>Some more content.</div>
+        <div class='contentDiv'>Even more content.</div>
+
+        <!-- The ID style in the CSS file overrides the element style in the CSS file. -->
+        <p id='top'>
+            Blah blah blah blah blah blah blah blah blah blah blah blah blah
+            <span class='highlighted'>highlighted blah</span> blah blah blah
+            blah blah blah blah blah blah blah blah blah blah blah blah blah.
+        </p>
+        <p id='middle'>
+            Bleh bleh bleh bleh bleh bleh bleh bleh bleh bleh bleh bleh bleh
+            <span class='highlighted'>highlighted bleh</span> bleh bleh bleh
+            bleh bleh bleh bleh bleh bleh bleh bleh bleh bleh bleh bleh bleh.
+        </p>
+        <p id='bottom'>
+            Bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh
+            <span class='highlighted'>highlighted bluh</span> bluh bluh bluh
+            bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh.
+        </p>
     </body>
-<html>
+</html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
+<!-- Locate step 11 for changes to bar.html. -->
 <html>
     <head>
-        <title>Bar chart example</title>
+        <title>Bar Chart Example</title>
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <style>
             svg {
@@ -101,10 +102,10 @@
                                 return  xScale(d.population);
                             });
 
-            // 11. Add the x-axis and y-axis with additional styling
+            // 11. Add the y-axis and x-axis with additional styling.
             const yAxis = d3.axisLeft(yScale);
             g.append('g').call(yAxis)
-                         .selectAll('.domain, .tick line').remove(); // remove the y-axis line and tick marks using this 'selectAll' command
+                         .selectAll('.domain, .tick line').remove(); // removes the y-axis line and tick marks
                        
             const xAxisTickFormat = function(d) { 
                     // You can use this link to look at d3.format options: 
@@ -112,12 +113,12 @@
                     return d3.format('.3s')(d).replace('G','B') 
             }
             const xAxis = d3.axisBottom(xScale)
-                            // make the x-axis labels nicer using a custom tick format function
+                            // Make the x-axis labels nicer using a custom tick format function.
                             .tickFormat(xAxisTickFormat)
-                            // extend the x-axis tick marks backwards to the top of the chart
+                            // Extend the x-axis tick marks backwards to the top of the chart.
                             .tickSize(-innerHeight);                
             var gXAxis = g.append('g').call(xAxis);
-        //     // remove the x-axis line 
+            // Remove the x-axis line.
             gXAxis.selectAll('.domain').remove();                   
             gXAxis.attr('transform',`translate(0,${innerHeight})`)
                             .selectAll("text")                   // If you want to rotate the axis text,
@@ -128,9 +129,9 @@
             
             
 
-        //     // 12. Label the x-axis and add a title
-        //     // Note that we're using CSS to help style both these 
-        //     // components and the x-axis tick marks.
+            // 12. Label the x-axis and add a title
+            // Note that we're using CSS to help style both these 
+            // components and the x-axis tick marks.
             g.append('text')
                 .attr('class','axis-label')
                 .attr('text-anchor','middle')

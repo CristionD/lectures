@@ -1,36 +1,53 @@
+<!-- Web servers have a default page they load, which is usually index.html. -->
+<!--
+    The !DOCTYPE declaration is not an HTML tag. It is an "information" to the browser about what document type to expect. For HTML5 (the most recent version of HTML supported by browsers like Chrome, Firefox, Edge, etc.), a developer can write it like this.
+    More info: https://www.geeksforgeeks.org/html-doctypes/
+-->
 <!DOCTYPE html>
+<!-- 
+    The html tag indicates the root HTML element. An HTML element is the collection of starting tag (e.g., <html>), all enclosed content, and ending tag (e.g., </html>). Most elements have an opening and closing tag, e.g. <html> and </html>. Most browsers can read tag names as case-insensitive, but the general style is to use lowercase. Tags can also have attributes, which are data fields (sometimes these are required) that help tell the browser how the data should be rendered.
+-->
 <html>
-    <head>
-        <title>Welcome to CSE 494!</title>
+    <head> <!--The <head> element contains metadata for the page, such as the title, links to CSS style and Javascript scripts.-->
+        <title>Welcome to CSE 494.</title>
+
         <style>
-            table {
+        	/*  This styling in utilized for the table example below. */
+            table
+            {
                 border: 2px solid black;
-                /* border-collapse: collapse; */ 
-                width: 500px;
-            }
-            th, td {
+                border-collapse: collapse;
+                width: 500px; /* A percent, like 50% or 75%, can be utilized instead of a pixel number. */    
+            }   
+            th, td /* This style shall apply to table headers and table data. */
+            {
                 border: 1px solid black;
                 padding: 5px;
                 text-align: center;
             }
-            th {
+            th /* This style shall apply only to table headers. */
+            {
                 background-color: lightgray;
             }
-            hr {
-                border:5px solid green;
+            hr /* This style only applies to <hr> elements without an inline style defining the border. */
+            {
+                border: 5px solid green
             }
         </style>
     </head>
-    <body>
-        Hello, world!
+    <body> <!-- The <body> element contains elements actually displayed on the page.-->
+        Hello, world.
 
-        <h1>This is the largest headline</h1>
+       <!-- Examples of Headers
+            Headers are generally used for introductory content, such as titles. -->
+		<h1>This is the largest headline</h1>
 		<h2>This is also a large headline</h2>
 		<h3>This is a slightly smaller headline</h3>
 		<h4>This is an even smaller headline</h4>
 		<h5>This is the second-smallest headline</h5>
 		<h6>This is the smallest headline</h6>
 
+        <!-- Examples of lists -->
         An Unordered List:
         <ul>
             <li>One Item</li>
@@ -45,19 +62,24 @@
             <li>Fourth Item</li>
         </ol>
 
+        <!-- Paragraph elements contain sections of text. Browsers usually render <p> elements with a single blank line before and after. -->
         <p>
             This is a paragraph.
         </p>
-        <p style='color:blue'>
-            This is another paragraph with <span style='color:maroon'>some text inside a span</span>.
+        <!-- The HTML <span> element is a generic inline container for phrasing content, which does not inherently represent anything. You might notice the text looks the same in the brower. You can use spans for styling purposes with CSS (tagging them using the class or id attributes). -->
+        <p style=color:purple>
+            This is another paragraph with <span style=color:green>some text inside a span</span>.
         </p> 
 
+        <!-- Examples of Images
+            Try uncommenting the the different images and playing around with how to size them. To separate them, add a <br/> tag (line break element).-->
         <!-- <img src="sparky.jpg" alt="Sparky"> -->
-        <!-- <img src="sparky.jpg" alt="Sparky" width="300"> -->
+        <img src="sparky.jpg" alt="Sparky" width="300">
         <!-- <img src="sparky.jpg" alt="Sparky" width="300" height="500"> -->
         <!-- <img src="sparky.jpg" alt="Sparky" width="50%"> -->
-        <img src="sparky.jpg" alt="Sparky" style="max-width:300px" width="50%">
+        <!-- <img src="sparky.jpg" alt="Sparky" style="max-width:300px" width="50%"> -->
 
+        <!-- Here is an example of a table. The CSS above styles the table and its nested elements. -->
         <h1>SCAI Faculty</h1>
         <table>
             <tr>
@@ -87,16 +109,39 @@
             </tr>
         </table>
 
-        <hr/>
-        <!-- You can also use CSS styling to update hr tags. -->
+        <!-- Horizontal Rows 
+            This tag adds a horizontal row to the page.
+        -->
+        <hr>
+        <!-- CSS styling can be utilized to update hr tags. -->
         <hr style="border:1px dashed red"/> 
         <hr style="width:50%; margin:auto"/>
 
+         <!-- 
+            The Document Object Model
+        
+            A Web page is a document. This document can be either displayed in the browser window or as the HTML source. But it is the same data in both cases. The Document Object Model (DOM) represents the web page as a tree data structure, and allows the HTML to be manipulated via CSS and Javascript.
+            Here's a couple of resources for learning more about the DOM:
+                https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
+                https://www.youtube.com/watch?v=tSv2KIF7uE4 
+            Get used to utilizing DevTools, especially the page inspector and web console. The Javascript debugger is also a nice tool, though we won't specifically cover it in CSE 494.
+                Chrome: https://developers.google.com/web/tools/chrome-devtools
+                Firefox: https://developer.mozilla.org/en-US/docs/Tools
+            DevTools shall make debugging homework and project code much easier and faster by allowing the developer to see and trace what happens in the DOM.
+        -->
+
+        <!--
+            Javascript shall be explored soon, but here are some examples of embedding it directly into a webpage using a <script> element.
+            If the <script> tag is placed in the <head> element, it shall run as soon as the page is loaded. If elemnts are referenced in the page that haven't yet been parsed/rendered, this is a bad idea. However, Jacascript can run in response to events: https://www.w3schools.com/js/js_events.asp                
+                
+            Below is an "onclick" event. Other events include onmouseover, onload, and onkeydown. Try changing the onclick to one of those.
+        -->
         <br/>
         <br/>
         <button onclick="hello();">Hello!</button>
         <script>
-            function hello() {
+            function hello()
+            {
                 alert('Well, hello there!!');
             }
         </script>
@@ -105,10 +150,13 @@
         -->
         <button id="goodbyeButton">Goodbye!</button>
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            /* When the DOM content (page) is loaded, discover an element with the id 'goodbyeButton' in the document/page. When the element is clicked, run the goodbye function. */
+            document.addEventListener('DOMContentLoaded', function()
+            {
                 document.querySelector('#goodbyeButton').onclick = goodbye;
             });
-            function goodbye() {
+            function goodbye()
+            {
                 alert('Goodbye, old friend...');
             }
         </script>

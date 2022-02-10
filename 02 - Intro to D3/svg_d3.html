@@ -25,6 +25,7 @@
         </style>
     </head>
     <body>
+        <!-- Only the SVG is added to the HTML body. The shapes are defined in the script element. -->
         <svg id="drawingpad"></svg>
     </body>
     <script>
@@ -42,19 +43,19 @@
         
         // Add rectangle 
         svg.append('rect')
-            .attr('x','200')
-            .attr('y', '20')
-            .attr('width','50')
-            .attr('height','20')
+            .attr('x', 200)
+            .attr('y', 20)
+            .attr('width', 50)
+            .attr('height', 20)
             .style('fill','blanchedalmond')
             .style('stroke','black');
         
         // Add line 
         svg.append('line')
-            .attr('x1','300')
-            .attr('x2','400')
-            .attr('y1','30')
-            .attr('y2','45')
+            .attr('x1', 300)
+            .attr('x2', 400)
+            .attr('y1', 30)
+            .attr('y2', 40)
             .style('stroke','black');
 
         // Add polyline (note multi-line string using `) 
@@ -69,17 +70,17 @@
 
         // Add ellipse 
         svg.append('ellipse')
-            .attr('cx','280')
-            .attr('cy','140')
-            .attr('rx',50)
-            .attr('ry',25)
+            .attr('cx', 280)
+            .attr('cy', 140)
+            .attr('rx', 50)
+            .attr('ry', 25)
             .style('fill','lemonchiffon')
             .style('stroke','black');
 
         // Add text 
         svg.append('text')
-            .attr('x','50')
-            .attr('y','200')
+            .attr('x', 50)
+            .attr('y', 200)
             .text('CSE 578? CSE 494!');
     </script>
 </html>
