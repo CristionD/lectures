@@ -63,6 +63,7 @@
                 </div>
                 <div class="col-4">
                     Add a new course: <br/>
+                    <!-- onchange for a textbox is invoked when the user alters the characters and clicks off the textbox. -->
                     Way 1: <input type='text' id='course-input-1' onchange='addClass(this.value);'> <br/>
                     Way 2: <input type='text' id='course-input-2' onchange='addClass();'> <br />
                     Way 3: <input type='text' id='course-input-3'> <br />
@@ -107,11 +108,15 @@
         // Examples of ways to select HTML elements and their values
         // 
 
+        // Note: onchange for a textbox is invoked when the user alters the characters and clicks off the textbox.
+
         // Way 1: Call function with the course-input-1's entered text (value) as an arg
         // Way 2: Call function and then retrieve #course-input-2's text
         function addClass(value) {
+            // If the value exists, then course-input-1 called this function.
             if(value) {
                 console.log('addClass: Way 1');
+            // If the value does not exist, then course-input-2 called this function.
             } else {
                 console.log('addClass:Way 2');
                 value = document.getElementById('course-input-2').value;
@@ -148,6 +153,7 @@
             If multiple elements match the selector, only the first matching element 
             (in document order) will be selected.
         */
+       // Bolds the text of the 1st li element when the #select-first-li-button is clicked on.
         document.querySelector('#select-first-li-button')
                 .addEventListener('click', function(event) {
             d3.select('li').style('font-weight','bold');
@@ -157,6 +163,7 @@
             (All list item button)
             Select all elements that match the specified selector string.
         */
+       // Turns the text of all li elements to red when the #select-all-li-button is clicked on.
         document.querySelector('#select-all-li-button')
                 .addEventListener('click', function(event) {
             d3.selectAll('li').style('color','red')
@@ -165,6 +172,7 @@
         /*
             (Chained list item button)(chained selection)
         */
+       // Turns the text of all li elements under #clicked-list to green when the #select-chain-li-button is clicked on.
         document.querySelector('#select-chain-li-button')
                 .addEventListener('click', function(event) {
             d3.selectAll('#clicked-list')
@@ -175,10 +183,13 @@
         /*
             Setting classes using D3 select and classed (set to either true or false)
         */
+       // Attaches the .highlighted class to the 1st .col-3 element when #add-highlights button is clicked on.
         document.querySelector('#add-highlights').addEventListener('click', function(event) {
             d3.select('.col-3').classed('highlighted', true); // select first
             // d3.selectAll('.col-3').classed('highlighted', true); // select all
         });
+
+        // Removes the .highlighted class from all .col-3 elements when #remove-highlights button is clicked on.
         document.querySelector('#remove-highlights').addEventListener('click', function(event) {
             d3.selectAll('.col-3').classed('highlighted',false);
         });
@@ -189,12 +200,15 @@
             Some more explanation: http://jonathansoma.com/tutorials/d3/clicking-and-hovering/
         */
         d3.selectAll('.col-3')
+            // Attaches the .highlighted class to a .col-3 element when the mouse is over it.
             .on('mouseover',function(d,i) {
                 d3.select(this).classed('highlighted',true)
             })
+            // Removes the .highlighted class from a .col-3 element when the mouse is no longer over it.
             .on('mouseout', function(d,i) {
                 d3.select(this).classed('highlighted',false);
             })
+            // 
             .on('click', function(d,i) {
                 d3.select(this).append('svg');
             });

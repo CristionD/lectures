@@ -33,26 +33,25 @@
     </body>
     <script>
 
-        // 1. We are creating two SVGs, one for a single line chart
-        //    and one for a multi-line chart. So add 2 svgs.
+        // 1. Two SVGs are being created, one for a single line chart
+        //    and one for a multi-line chart.
         var svgSingle =  d3.select('#single-div')
                             .append('svg'); 
         var svgMulti =  d3.select('#multi-div')
                             .append('svg'); 
         
-        // 2. Since both SVGs are the same size, let's just share formatting variables
+        // 2. Since both SVGs are the same size, formatting variables are shared.
         var margin = { top: 10, right: 30, bottom: 30, left: 60 };
         const width = +svgSingle.style('width').replace('px','');
         const height = +svgSingle.style('height').replace('px','');
         const innerWidth = width - margin.left - margin.right;
         const innerHeight = height - margin.top - margin.bottom;
         
-        // 3. Both line charts can also share the same x scale, 
-        //    but they do not share the same y scale. The y scale we create
-        //    in the functions to draw the charts.
+        // 3. Both line charts can also share the same x-scale, but they do not share the same y-scale.
+        //    The separate y-scales shall be created in the functions to draw the charts.
         var xScale = d3.scaleTime();
 
-        // 4. Both line charts will use the same dataset; store as a global var
+        // 4. Both line charts will use the same dataset, which is stored as a global variable.
         var lineData;
 
         // 5. Load the data
@@ -90,7 +89,7 @@
         // 6. Draw the single line chart
         function singleLineChart() {
 
-            // The attribute that we'll plot. 
+            // The attribute below is what shall be plotted. 
             // Comment it out and try some other attributes.
             const attribute = 'Finance'; 
             // const attribute = 'Manufacturing'; 
@@ -98,7 +97,7 @@
             // const attribute = 'Information'; 
            
             // Add a g element with top/left margin offsets
-            // Remember, if you use JS string literals in the transform, 
+            // Remember, if JS string literals are utilized in the transform, 
             // use a tick mark (`) and not a single quote (').
             const g = svgSingle.append('g')
                         .attr('transform',`translate(${margin.left},${margin.top})`);
@@ -124,11 +123,11 @@
             const singleLine = d3.line()
                                     .x(d => xScale(d.date))
                                     .y(d => yScale(d[attribute]))  
-                                    .curve(d3.curveMonotoneX)
+                                    .curve(d3.curveMonotoneX)  // smooths the line
 
             // 9. Append the line to chart.
-            //    Notice that we don't do a ".data(...).enter()" here.
-            //    Since there's just 1 element (1 line), we use "datum" to
+            //    Notice that ".data(...).enter()" is not applied here.
+            //    Since there's just 1 element (1 line), "datum" is utilized to
             //    bind lineData to a single line and then just append 
             //    it to the display. More info:
             //    https://www.intothevoid.io/data-visualization/understanding-d3-data-vs-datum/
@@ -140,7 +139,7 @@
                 .style('stroke-width','1')
                 .attr('d', singleLine);
             
-            // 10. We can also add some circle marks like this.
+            // 10. Add some circle marks like this.
             //     For line charts with lots of timsteps, this
             //     may not be the best idea. :-)
             g.selectAll('circle')
@@ -153,7 +152,7 @@
                     .attr('cy', d => yScale(d[attribute]))
                     .attr('r', 2);
             
-            // // Add axis labels
+            // Add axis labels
             addAxesLabels(g);
         }
 
