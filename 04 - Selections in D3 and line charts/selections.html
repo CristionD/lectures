@@ -111,7 +111,7 @@
         // Note: onchange for a textbox is invoked when the user alters the characters and clicks off the textbox.
 
         // Way 1: Call function with the course-input-1's entered text (value) as an arg
-        // Way 2: Call function and then retrieve #course-input-2's text
+        // // Way 2: Call function and then retrieve #course-input-2's text
         function addClass(value) {
             // If the value exists, then course-input-1 called this function.
             if(value) {
@@ -128,7 +128,7 @@
             document.getElementById('clicked-list').appendChild(item);
         }
 
-        // Way 3: Add an event listener to #course-input-3
+        // // Way 3: Add an event listener to #course-input-3
         document.getElementById('course-input-3').addEventListener('change', function(event) {
             console.log('addClass:Way 3');
             addClass(this.value);
@@ -142,11 +142,12 @@
             let value = document.getElementById('course-input-4').value;
             // let value = d3.select('#course-input-4').node().value;
             console.log(value);
+            addClass(value);
         });
 
 
 
-        // D3 selection examples
+        // // D3 selection examples
 
         /*
             d3.select will select the first element that matches the specified selector string.
@@ -185,13 +186,15 @@
         */
        // Attaches the .highlighted class to the 1st .col-3 element when #add-highlights button is clicked on.
         document.querySelector('#add-highlights').addEventListener('click', function(event) {
-            d3.select('.col-3').classed('highlighted', true); // select first
-            // d3.selectAll('.col-3').classed('highlighted', true); // select all
+            // d3.select('.col-3').classed('highlighted', true); // select first
+            d3.selectAll('.col-3').classed('highlighted', true); // select all
         });
 
         // Removes the .highlighted class from all .col-3 elements when #remove-highlights button is clicked on.
         document.querySelector('#remove-highlights').addEventListener('click', function(event) {
             d3.selectAll('.col-3').classed('highlighted',false);
+                    // .attr('class','highlighted');
+
         });
 
         /*
