@@ -55,6 +55,7 @@
                 const startX = 50,
                     endX = width-50;
 
+                // Draw a circle for every element in animateData.
                 svg1.selectAll('circle')
                     .data(animateData)
                     .enter()
@@ -65,6 +66,7 @@
                     .style('fill', 'peachpuff')
                     .style('stroke','black');                
 
+                // Translate the circles when the 'Animate position' button is pressed.
                 function animatePosition() {
                     svg1.selectAll('circle')
                         .transition()
@@ -76,6 +78,7 @@
                         });
                 }
 
+                // Translate the circle at a slow speed when the 'Slow animate' button is pressed.
                 function slowAnimate() {
                     svg1.selectAll('circle')
                         .transition()
@@ -85,6 +88,7 @@
                         });
                 }
 
+                // Translate the circles 0.5 seconds after the 'Delayed animation' button is pressed.
                 function delayedAnimation() {
                     svg1.selectAll('circle')
                         .transition()
@@ -94,6 +98,7 @@
                         });
                 }
 
+                // Translate the circles with a 0.15 second delay between each circle when the 'Staggered animation' button is pressed.
                 function staggeredAnimation() {
                     svg1.selectAll('circle')
                         .transition()
@@ -110,6 +115,7 @@
                     See this block for the different transitions available in D3 v5.
                     https://bl.ocks.org/d3noob/39e8263efd3db34c3bde486f9067a961 
                 */
+               // Translate the circles back and forth in a bouncing manner when the 'Eased animation' button is pressed.
                 function easedAnimation() {
                     svg1.selectAll('circle')
                         .transition()
@@ -127,6 +133,8 @@
                     good discussion: 
                     https://datawanderings.com/2018/08/15/d3-js-v5-promise-syntax-examples/
                 */
+               // Translate the circles back and forth repeatedly when the 'Chained animations' button is pressed.
+               // Finish the current animation and halt future animations when the button is pressed again.
                 function chainedAnimations() {
                     const circles = svg1.selectAll('circle');
                     circles.transition()
@@ -134,6 +142,7 @@
                         .attr('cx', function(d,i) {
                             return d3.select(this).attr('cx') == endX ? startX : endX;
                         })
+                        // Wait for the above transition to end, then perform the code below.
                         .end()
                         .then(() => {
                             circles
@@ -150,7 +159,6 @@
                         });
                 }  
             </script>
-
 
             <!--
                 This example shows two things:
@@ -240,12 +248,6 @@
                     return coords;
                 }
             </script>
-
-
-
-
-
-
 
             <!--
                 
@@ -535,7 +537,7 @@
             <!--
 
                 This last example shows how you can update and rearrange a bar chart 
-                using selection.joino and animated transitions with delays. This example
+                using selection.join and animated transitions with delays. This example
                 is inspired by the bar chart race that's currently popular:
                 https://app.flourish.studio/@flourish/bar-chart-race
 

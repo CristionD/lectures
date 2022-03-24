@@ -111,7 +111,7 @@
         // Note: onchange for a textbox is invoked when the user alters the characters and clicks off the textbox.
 
         // Way 1: Call function with the course-input-1's entered text (value) as an arg
-        // // Way 2: Call function and then retrieve #course-input-2's text
+        // Way 2: Call function and then retrieve #course-input-2's text
         function addClass(value) {
             // If the value exists, then course-input-1 called this function.
             if(value) {
@@ -128,7 +128,7 @@
             document.getElementById('clicked-list').appendChild(item);
         }
 
-        // // Way 3: Add an event listener to #course-input-3
+        // Way 3: Add an event listener to #course-input-3
         document.getElementById('course-input-3').addEventListener('change', function(event) {
             console.log('addClass:Way 3');
             addClass(this.value);

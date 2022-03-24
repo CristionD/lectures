@@ -41,7 +41,7 @@
                 // The data array
                 let data = [ 1, 3, 3, 6, 10, 10, 13, 14, 15, 16, 17, 19, 20 ];
 
-                // get refernce to the SVG
+                // Get refernce to the SVG
                 let svg = d3.select('#color-svg');
                 let svgWidth = +svg.node().clientWidth;
                 let stepSize = (svg.node().clientWidth - 120) / data.length;
@@ -119,7 +119,7 @@
                 // interpolation between them may not match human
                 // perception. It's better to map from white/black to a hue.
                 let manualScale1 = d3.scaleLinear()
-                                    .domain(d3.extent(data))
+                                    .domain(d3.extent(data))  // [1, 20]
                                     .range(['lightgreen','darkslateblue']);
 
                 svg.selectAll('.circles-3')
